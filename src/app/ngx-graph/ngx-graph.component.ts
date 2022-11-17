@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 
@@ -11,8 +11,18 @@ import { Component, OnInit } from '@angular/core';
 export class NgxGraphComponent implements OnInit {
 
   constructor() { }
+  
+ 
+  @Input() model: any;
+  @Input() index:number;     
+
+  aa:{
+   
+  }
 
   ngOnInit(): void {
+   
+    this.aa
   }
 
 }

@@ -1,0 +1,23 @@
+<h1>show graph</h1>
+
+
+<table id="networkT" class ="table">
+    <thead>
+      <th>index</th>
+      <th>Source</th>
+      <th>Label</th>
+      <th>Target</th>
+      <th>TargetLabel</th>
+      <th>Weight</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of model">
+        <td>{{item.index}}</td>
+        <td>{{item.Source}}</td>
+        <td>{{item.Label}} </td> 
+        <td>{{item.Target}}</td>
+        <td>{{item.TargetLabel}}</td>
+        <td>{{item.count}} </td> 
+      </tr>
+    </tbody>
+  </table>

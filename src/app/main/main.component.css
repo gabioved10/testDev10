@@ -1,19 +1,19 @@
-#networkT {
+.table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
   }
   
-  #networkT td, #networkT th {
+  .table td, .table th {
     border: 1px solid #ddd;
     padding: 8px;
   }
   
-  #networkT tr:nth-child(even){background-color: #f2f2f2;}
+  .table tr:nth-child(even){background-color: #f2f2f2;}
   
-  #networkT tr:hover {background-color: #ddd;}
+  .table tr:hover {background-color: #ddd;}
   
-  #networkT th {
+  #networkT th{
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -21,21 +21,7 @@
     color: white;
   }
 
-  
-  #serchT {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  #serchT td, #serchT th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  #serchT tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #serchT tr:hover {background-color: #ddd;}
+ 
   
   #serchT th {
     padding-top: 12px;
@@ -58,3 +44,19 @@ input,
 label {
     margin: .4rem 0;
 }
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */

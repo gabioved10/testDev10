@@ -22,6 +22,12 @@ export class MainComponent implements OnInit {
   edgesCount: number=0;//משתנה כמות קשתות
   mergeArray:any[] = [];//מערך מאוחד ללא כפיליות כולל משקלים ך
   findArray:any[] = [];//מערך לרשומות שנמאו בחיפוש
+  SelectedArray:object[]=[]; //רשומה שנבחרה לצורך העברה לקומונטטה גרף
+  showAll:number=0;
+  showGraph:number=0;
+  Density:number=0.010
+  // findInex=0;//משתנה לזיהוי מספר אינדקס בחיפוש
+
 
 //פונקציות לקליטת קובץ אקסל
  
@@ -47,6 +53,7 @@ incomingfile(event: any) {
       var edges: any = XLSX.utils.sheet_to_json(worksheet_1, { raw: true });//מערך edges
       this.nodesCount = nodes.length//חישוב כמות קודקודים
       this.sumFunction(edges,nodes);//שליחת מערך לצורך חישובים edges
+      
     }
 
     fileReader.readAsArrayBuffer(this.file);
@@ -133,16 +140,23 @@ incomingfile(event: any) {
   };
 
 
-//פונקציה לבניית מערך איתור טקסט
+//פונקציה לחיפוש ובניית מערך לאיתור טקסט
+
   findTextFunction(textFind:string){
+
+    if(textFind==""){
+      alert("Insert Text")
+      return 0;
+    }
     this.findArray =[];
-    
+    this.showAll=1;
     this.mergeArray.forEach(element => {
      let ele= element["Label"];
+
      //הורדת גרדיים פסיק ומרכאות
       ele = element["Label"].replace("'", '')
       ele = element["Label"].replace(",", '')
-
+      
       let finalString = '';
 
           for(let i =0; i<ele.length; i++){
@@ -274,9 +288,22 @@ incomingfile(event: any) {
     return h;
 }
 
+showAllFunction(){
+  this.showAll=0;
 
+}
+
+graphFunction(item){
+  this.SelectedArray=[];
+  this.SelectedArray.push(item);
+
+  console.log(this.SelectedArray)
+  this.showGraph=1;
+
+}
 
   ngOnInit(): void {
+    
   }
 
 }
