@@ -13,7 +13,9 @@ export class NgxGraphComponent implements OnInit {
   constructor() { }
   
  
-  @Input() model: any;
+  @Input() arr: any;
+  @Input() arrST: any;
+  @Input() arrTS: any;
   @Input() index:number;     
 
   aa:{

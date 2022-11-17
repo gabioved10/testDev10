@@ -23,6 +23,8 @@ export class MainComponent implements OnInit {
   mergeArray:any[] = [];//מערך מאוחד ללא כפיליות כולל משקלים ך
   findArray:any[] = [];//מערך לרשומות שנמאו בחיפוש
   SelectedArray:object[]=[]; //רשומה שנבחרה לצורך העברה לקומונטטה גרף
+  targetSource :object[]=[];//רשומות קשתות נכנסות
+  sourceTarget :object[]=[];//רשומות קשתות נכנסות
   showAll:number=0;
   showGraph:number=0;
   Density:number=0.010
@@ -153,7 +155,7 @@ incomingfile(event: any) {
     this.mergeArray.forEach(element => {
      let ele= element["Label"];
 
-     //הורדת גרדיים פסיק ומרכאות
+     //הורדת גרשיים פסיק ומרכאות
       ele = element["Label"].replace("'", '')
       ele = element["Label"].replace(",", '')
       
@@ -187,11 +189,34 @@ incomingfile(event: any) {
       
       
     });
-    console.log(this.findArray)
+  
     
   }
 
-   levenshtein(s:string, t:string) {
+
+//פונקציה לתצוגת כל הרשומות כולל משקלים
+showAllFunction(){
+  this.showAll=0;
+
+}
+
+//פונקציה להעברת רשומה שנבחרה לקומפוננטה גרף
+graphFunction(item){
+  this.SelectedArray=[];
+  this.sourceTarget =[];
+  this.targetSource=[];
+  this.SelectedArray.push(item);
+  this.sourceTarget=this.mergeArray.filter(e => e["Source"] == item["Source"]);
+  this.targetSource=this.mergeArray.filter(e => e["Target"] == item["Source"]);
+  this.showGraph=1;
+
+}
+
+
+
+
+  //פונקציה לוינשטיין לחיפוש 
+  levenshtein(s:string, t:string) {
    
     if (s === t) {
         return 0;
@@ -286,20 +311,6 @@ incomingfile(event: any) {
     }
    
     return h;
-}
-
-showAllFunction(){
-  this.showAll=0;
-
-}
-
-graphFunction(item){
-  this.SelectedArray=[];
-  this.SelectedArray.push(item);
-
-  console.log(this.SelectedArray)
-  this.showGraph=1;
-
 }
 
   ngOnInit(): void {

@@ -1,24 +1,29 @@
-<input class="w3-input" type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="menue">
+  <div class="mainDataleft">
+    <span><b>Nodes:</b>{{nodesCount}}</span>
+    <span><b>Edges</b>:{{edgesCount}}</span>
+    <span><b>Avg. Degree:</b>{{this.avgDegree| number : '1.3-3'}}</span>
+    <span><b>Avg. Weighted Degree:</b>{{weightedDegree| number : '1.3-3'}}</span>
+    <span><b>Density:</b>{{Density| number : '1.3-3'}}</span>
+    <input  class="w3-input" type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+   
 
-<h1>Nodes:{{nodesCount}}</h1>
-<h1>Edges:{{edgesCount}}</h1>
-<h1>Avg. Degree:{{this.avgDegree| number : '1.3-3'}}</h1>
-<h1>Avg. Weighted Degree:{{weightedDegree| number : '1.3-3'}}</h1>
-<h1>Density:{{Density| number : '1.3-3'}}</h1>
+  </div>
 
-
+  
+</div>
 <!-- <h1>Display a Search Field</h1>
 <button (click)="levenshtein('כנדדסת','הכנסת')"></button> -->
 
+<div class="myTable">
+  <div class="search">
+<input placeholder="search..." type="search" id="site-search" name="serchText" #serchText>
+<button class="icon" (click)="findTextFunction(serchText.value)"><i class="fa fa-search"></i></button>
+<button class="button"(click)="showAllFunction()">clean search</button>
+</div>
 
-<label >Search a Text:</label>
-<input type="search" id="site-search" name="serchText" #serchText>
-
-
-<button class="button button2"(click)="findTextFunction(serchText.value)">Search</button>
-<button class="button"(click)="showAllFunction()">Show All</button>
-
-<table id="serchT" *ngIf="showAll==1"class ="table">
+<table id="networkT" *ngIf="showAll==1"class ="table">
   <thead>
     <th>index</th>
     <th>Source</th>
@@ -26,17 +31,17 @@
     <th>Target</th>
     <th>TargetLabel</th>
     <th>Weight</th>
-    <th></th>
+    
   </thead>
   <tbody>
-    <tr *ngFor="let item of findArray">
+    <tr (click)="graphFunction(item)" *ngFor="let item of findArray">
       <td>{{item.index}}</td>
       <td>{{item.Source}}</td>
       <td>{{item.Label}} </td> 
       <td>{{item.Target}}</td>
       <td>{{item.TargetLabel}}</td>
       <td>{{item.count}} </td> 
-      <button class="button button4"(click)="graphFunction(item)">View graph</button>
+      <!-- <button class="button button5"(click)="graphFunction(item)">View graph</button> -->
     </tr>
   </tbody>
 </table>
@@ -56,7 +61,7 @@
       <th>Weight</th>
     </thead>
     <tbody>
-      <tr *ngFor="let item of mergeArray">
+      <tr (click)="graphFunction(item)" *ngFor="let item of mergeArray">
         <td>{{item.index}}</td>
         <td>{{item.Source}}</td>
         <td>{{item.Label}} </td> 
@@ -67,5 +72,7 @@
     </tbody>
   </table>
 
-  <app-ngx-graph [model]="SelectedArray"></app-ngx-graph>
-  
+</div>  
+<div class="graphDataRight">
+  <app-ngx-graph  [arr]="SelectedArray" [arrST]="this.sourceTarget" [arrTS]="this.targetSource"></app-ngx-graph>
+  </div>

@@ -1,6 +1,3 @@
-<h1>show graph</h1>
-
-
 <table id="networkT" class ="table">
     <thead>
       <th>index</th>
@@ -11,13 +8,23 @@
       <th>Weight</th>
     </thead>
     <tbody>
-      <tr *ngFor="let item of model">
-        <td>{{item.index}}</td>
-        <td>{{item.Source}}</td>
-        <td>{{item.Label}} </td> 
-        <td>{{item.Target}}</td>
-        <td>{{item.TargetLabel}}</td>
-        <td>{{item.count}} </td> 
+      <tr *ngFor="let item of arr">
+        <td>{{arr[0].index}}</td>
+        <td>{{arr[0].Source}}</td>
+        <td>{{arr[0].Label}} </td> 
+        <td>{{arr[0].Target}}</td>
+        <td>{{arr[0].TargetLabel}}</td>
+        <td>{{arr[0].count}} </td> 
       </tr>
     </tbody>
   </table>
+  <div class="ksatot">
+    <div>
+  <h1>קשתות וקודקוד יוצאות</h1>
+  <div *ngFor="let item of arrST">{{item.Target}} | {{item.TargetLabel}} | {{item.count}}</div>
+</div>
+<div>
+  <h1>קשתות וקודקוד נכנסות</h1>
+  <div *ngFor="let item of arrTS">{{item.Source}} | {{item.Label}} | {{item.count}}</div>
+</div>
+</div>
