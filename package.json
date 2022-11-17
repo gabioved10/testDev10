@@ -19,7 +19,12 @@
     "@angular/platform-browser": "~11.2.14",
     "@angular/platform-browser-dynamic": "~11.2.14",
     "@angular/router": "~11.2.14",
+    "@swimlane/docspa-core": "^8.0.1",
+    "@swimlane/ngx-graph": "^8.0.2",
+    "@types/xlsx": "0.0.36",
+    "d3-scale": "^4.0.2",
     "rxjs": "~6.6.0",
+    "ts-xlsx": "0.0.11",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

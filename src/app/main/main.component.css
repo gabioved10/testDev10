@@ -1,0 +1,60 @@
+#networkT {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #networkT td, #networkT th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #networkT tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #networkT tr:hover {background-color: #ddd;}
+  
+  #networkT th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  
+  #serchT {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #serchT td, #serchT th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #serchT tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #serchT tr:hover {background-color: #ddd;}
+  
+  #serchT th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #1d04aa;
+    color: white;
+  }
+  
+
+
+
+
+  label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}

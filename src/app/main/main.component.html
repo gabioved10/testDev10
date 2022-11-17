@@ -1,0 +1,63 @@
+<input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+
+<h1>Nodes:{{nodesCount}}</h1>
+<h1>Edges:{{edgesCount}}</h1>
+<h1>Avg. Degree:{{this.avgDegree| number : '1.3-3'}}</h1>
+<h1>Avg. Weighted Degree{{weightedDegree| number : '1.3-3'}}</h1>
+
+<!-- <h1>Display a Search Field</h1>
+<button (click)="levenshtein('כנדדסת','הכנסת')"></button> -->
+
+
+<label >Search a Text:</label>
+<input type="search" id="site-search" name="serchText" #serchText>
+
+
+<button (click)="findTextFunction(serchText.value)">Search</button>
+
+<table id="serchT" *ngIf="findArray!=null">
+  <thead>
+    <th>index</th>
+    <th>Source</th>
+    <th>Label</th>
+    <th>Target</th>
+    <th>TargetLabel</th>
+    <th>Weight</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of findArray">
+      <td>{{item.index}}</td>
+      <td>{{item.Source}}</td>
+      <td>{{item.Label}} </td> 
+      <td>{{item.Target}}</td>
+      <td>{{item.TargetLabel}}</td>
+      <td>{{item.count}} </td> 
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+  <table id="networkT">
+    <thead>
+      <th>index</th>
+      <th>Source</th>
+      <th>Label</th>
+      <th>Target</th>
+      <th>TargetLabel</th>
+      <th>Weight</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of mergeArray">
+        <td>{{item.index}}</td>
+        <td>{{item.Source}}</td>
+        <td>{{item.Label}} </td> 
+        <td>{{item.Target}}</td>
+        <td>{{item.TargetLabel}}</td>
+        <td>{{item.count}} </td> 
+      </tr>
+    </tbody>
+  </table>
