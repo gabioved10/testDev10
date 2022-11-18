@@ -17,7 +17,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04AA6D;
+    background-color: #007bff;
     color: white;
   }
 
@@ -39,10 +39,25 @@
     display: block;
     font: 1rem 'Fira Sans', sans-serif;
 }
-
+span b{
+  color: #007bff;
+}
+.selecrFile{
+  display: contents;
+  background-color: #007bff;
+}
+input[type='file'] {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
 input,
 label {
     margin: .4rem 0;
+}
+.search{
+  direction: ltr;
 }
 .search input{
   padding: 8px;
@@ -67,6 +82,7 @@ label {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  
   }
 
 
@@ -90,9 +106,13 @@ label {
   width: 90%;
   border: 2px solid;
   margin: 28px;
+  direction: rtl;
 }
+td {text-align: right; direction: rtl;}
 span {
     margin: 12px;
     font-size: larger;}
 
     table  { margin-top:  20px; display: inline-block; overflow: auto; max-height: 300px;}
+
+  

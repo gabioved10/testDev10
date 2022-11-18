@@ -27,7 +27,7 @@ export class MainComponent implements OnInit {
   sourceTarget :object[]=[];//רשומות קשתות נכנסות
   showAll:number=0;
   showGraph:number=0;
-  Density:number=0.010
+  Density:number=0
   // findInex=0;//משתנה לזיהוי מספר אינדקס בחיפוש
 
 

@@ -1,30 +1,11 @@
-<table id="networkT" class ="table">
-    <thead>
-      <th>index</th>
-      <th>Source</th>
-      <th>Label</th>
-      <th>Target</th>
-      <th>TargetLabel</th>
-      <th>Weight</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of arr">
-        <td>{{arr[0].index}}</td>
-        <td>{{arr[0].Source}}</td>
-        <td>{{arr[0].Label}} </td> 
-        <td>{{arr[0].Target}}</td>
-        <td>{{arr[0].TargetLabel}}</td>
-        <td>{{arr[0].count}} </td> 
-      </tr>
-    </tbody>
-  </table>
-  <div class="ksatot">
-    <div>
-  <h1>קשתות וקודקוד יוצאות</h1>
-  <div *ngFor="let item of arrST">{{item.Target}} | {{item.TargetLabel}} | {{item.count}}</div>
-</div>
-<div>
-  <h1>קשתות וקודקוד נכנסות</h1>
-  <div *ngFor="let item of arrTS">{{item.Source}} | {{item.Label}} | {{item.count}}</div>
-</div>
+<h2 style="text-align: right;">{{arr[0].Label}}&nbsp;&nbsp;&nbsp;&nbsp;{{arr[0].Source}}</h2>
+<div class="ksatot">
+  <div>
+    <h3 style="display:inline-block;text-align: right;">סהכ קשתות יוצאות: </h3> &nbsp;&nbsp;&nbsp; {{sumSTksatot}}
+    <div style="text-align: right;"*ngFor="let item of arrST">{{item.Target}} | {{item.TargetLabel}} | {{item.count}}</div>
+  </div>
+  <div>
+    <h3 style="display:inline-block;text-align: right;"> סהכ קשתות נכנסות: </h3> &nbsp;&nbsp;&nbsp;&nbsp;{{sumTSksatot}}
+    <div style="text-align: right;" *ngFor="let item of arrTS">{{item.Source}} | {{item.Label}} | {{item.count}}</div>
+  </div>
 </div>

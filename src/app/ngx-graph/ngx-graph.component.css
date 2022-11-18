@@ -32,4 +32,5 @@
   }
   .ksatot{
     display: flex;
+    direction: rtl;
   }
