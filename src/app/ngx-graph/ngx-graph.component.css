@@ -34,3 +34,20 @@
     display: flex;
     direction: rtl;
   }
+
+
+  #visNetworkIN,visNetworkOUT{
+    width: 50%;
+    height: 700px;
+    border: 1px solid rgb(1, 1, 1);
+    display: inline-block;
+  }
+
+
+  div#DivGrafh {
+    width: 50%;
+    height: 700px;
+    border: 1px solid rgb(1, 1, 1);
+    display: inline-block;
+   
+}

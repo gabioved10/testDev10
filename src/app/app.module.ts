@@ -6,11 +6,13 @@ import { MainComponent } from './main/main.component';
 import { NgxGraphComponent } from './ngx-graph/ngx-graph.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     NgxGraphComponent
+
   ],
   imports: [
     BrowserModule

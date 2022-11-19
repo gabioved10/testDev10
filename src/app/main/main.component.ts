@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'ts-xlsx';
 
- 
+
 
 
 
@@ -19,21 +19,21 @@ export class MainComponent implements OnInit {
   nodesCount: number = 0;//משתנה כמות קודקודים 
   avgDegree: number = 0;//משתנה לחישוב דרגה ממוצעת 
   weightedDegree: number = 0;//משתנה לחישוב דרגה ממוצעת משוקלל
-  edgesCount: number=0;//משתנה כמות קשתות
-  mergeArray:any[] = [];//מערך מאוחד ללא כפיליות כולל משקלים ך
-  findArray:any[] = [];//מערך לרשומות שנמאו בחיפוש
-  SelectedArray:object[]=[]; //רשומה שנבחרה לצורך העברה לקומונטטה גרף
-  targetSource :object[]=[];//רשומות קשתות נכנסות
-  sourceTarget :object[]=[];//רשומות קשתות נכנסות
-  showAll:number=0;
-  showGraph:number=0;
-  Density:number=0
+  edgesCount: number = 0;//משתנה כמות קשתות
+  mergeArray: any[] = [];//מערך מאוחד ללא כפיליות כולל משקלים ך
+  findArray: any[] = [];//מערך לרשומות שנמאו בחיפוש
+  SelectedArray: object[] = []; //רשומה שנבחרה לצורך העברה לקומונטטה גרף
+  targetSource: object[] = [];//רשומות קשתות נכנסות
+  sourceTarget: object[] = [];//רשומות קשתות נכנסות
+  showAll: number = 0;
+  showGraph: number = 0;
+  Density: number = 0
   // findInex=0;//משתנה לזיהוי מספר אינדקס בחיפוש
 
 
-//פונקציות לקליטת קובץ אקסל
- 
-incomingfile(event: any) {
+  //פונקציות לקליטת קובץ אקסל
+
+  incomingfile(event: any) {
     this.file = event.target.files[0];
     this.Upload()
   }
@@ -54,8 +54,8 @@ incomingfile(event: any) {
       var nodes: any = XLSX.utils.sheet_to_json(worksheet_0, { raw: true });//מערך nodes
       var edges: any = XLSX.utils.sheet_to_json(worksheet_1, { raw: true });//מערך edges
       this.nodesCount = nodes.length//חישוב כמות קודקודים
-      this.sumFunction(edges,nodes);//שליחת מערך לצורך חישובים edges
-      
+      this.sumFunction(edges, nodes);//שליחת מערך לצורך חישובים edges
+      this.showGraph = 1;
     }
 
     fileReader.readAsArrayBuffer(this.file);
@@ -63,7 +63,7 @@ incomingfile(event: any) {
 
   //  פונקציה לביצוע חישובים מקבלת ג'יסון של edges
 
-  sumFunction(edgesArr: [],nodesArr: []) {
+  sumFunction(edgesArr: [], nodesArr: []) {
 
     let count: number = 1;
     let countKeset: number = 0;
@@ -72,16 +72,16 @@ incomingfile(event: any) {
     let index = 1;
 
     let obj = {
-      index:1,
+      index: 1,
       Source: '',
       Target: '',
-      Label:'',
-      TargetLabel:'',
+      Label: '',
+      TargetLabel: '',
       count: 1
     };
 
 
-//יצירת מערך מאוחד ללא כפיליות כולל משקלים בשם mergeArr
+    //יצירת מערך מאוחד ללא כפיליות כולל משקלים בשם mergeArr
 
     edgesArr.forEach((element) => {
       TempArr = mergeArr.filter(e => e["Source"] == element["Source"] && e["Target"] == element["Target"]);
@@ -103,11 +103,11 @@ incomingfile(event: any) {
 
         //איפוס למשתנה obj
         obj = {
-          index:1,
+          index: 1,
           Source: '',
           Target: '',
-          Label:'',
-          TargetLabel:'',
+          Label: '',
+          TargetLabel: '',
           count: 1
         };
       }
@@ -137,184 +137,184 @@ incomingfile(event: any) {
     this.avgDegree = (this.edgesCount / this.nodesCount)//דרגה ממוצעת
     this.weightedDegree = countKeset / this.nodesCount;//דרגה ממוצעת משוקלל
     this.mergeArray = mergeArr;
-    
+
 
   };
 
 
-//פונקציה לחיפוש ובניית מערך לאיתור טקסט
+  //פונקציה לחיפוש ובניית מערך לאיתור טקסט
 
-  findTextFunction(textFind:string){
+  findTextFunction(textFind: string) {
 
-    if(textFind==""){
+    if (textFind == "") {
       alert("Insert Text")
       return 0;
     }
-    this.findArray =[];
-    this.showAll=1;
+    this.findArray = [];
+    this.showAll = 1;
     this.mergeArray.forEach(element => {
-     let ele= element["Label"];
+      let ele = element["Label"];
 
-     //הורדת גרשיים פסיק ומרכאות
+      //הורדת גרשיים פסיק ומרכאות
       ele = element["Label"].replace("'", '')
       ele = element["Label"].replace(",", '')
-      
+
       let finalString = '';
 
-          for(let i =0; i<ele.length; i++){
-              if(ele.charAt(i) != '"'){
-                  finalString += ele.charAt(i);
-              }
-              
-              }
+      for (let i = 0; i < ele.length; i++) {
+        if (ele.charAt(i) != '"') {
+          finalString += ele.charAt(i);
+        }
 
-              ele=finalString;
+      }
+
+      ele = finalString;
 
       //הכנסת המחרוזת למערך        
 
       let myArray = ele.split(" ");
 
       for (let index = 0; index < myArray.length; index++) {
-        if (this.levenshtein(myArray[index],textFind) == 2){
-         
-          this.findArray.push(element);
-  
-        }
-      
-        
-      }
-      
+        if (this.levenshtein(myArray[index], textFind) == 2) {
 
-     
-      
-      
+          this.findArray.push(element);
+
+        }
+
+
+      }
+
+
+
+
+
     });
-  
-    
+
+
   }
 
 
-//פונקציה לתצוגת כל הרשומות כולל משקלים
-showAllFunction(){
-  this.showAll=0;
+  //פונקציה לתצוגת כל הרשומות כולל משקלים
+  showAllFunction() {
+    this.showAll = 0;
 
-}
+  }
 
-//פונקציה להעברת רשומה שנבחרה לקומפוננטה גרף
-graphFunction(item){
-  this.SelectedArray=[];
-  this.sourceTarget =[];
-  this.targetSource=[];
-  this.SelectedArray.push(item);
-  this.sourceTarget=this.mergeArray.filter(e => e["Source"] == item["Source"]);
-  this.targetSource=this.mergeArray.filter(e => e["Target"] == item["Source"]);
-  this.showGraph=1;
+  //פונקציה להעברת רשומה שנבחרה לקומפוננטה גרף
+  graphFunction(item) {
+    this.SelectedArray = [];
+    this.sourceTarget = [];
+    this.targetSource = [];
+    this.SelectedArray.push(item);
+    this.sourceTarget = this.mergeArray.filter(e => e["Source"] == item["Source"]);
+    this.targetSource = this.mergeArray.filter(e => e["Target"] == item["Source"]);
+    this.showGraph = 1;
 
-}
+  }
 
 
 
 
   //פונקציה לוינשטיין לחיפוש 
-  levenshtein(s:string, t:string) {
-   
+  levenshtein(s: string, t: string) {
+
     if (s === t) {
-        return 0;
+      return 0;
     }
     var n = s.length, m = t.length;
     if (n === 0 || m === 0) {
-        return n + m;
+      return n + m;
     }
     var x = 0, y, a, b, c, d, g, h, k;
     var p = new Array(n);
     for (y = 0; y < n;) {
-        p[y] = ++y;
+      p[y] = ++y;
     }
 
     for (; (x + 3) < m; x += 4) {
-        var e1 = t.charCodeAt(x);
-        var e2 = t.charCodeAt(x + 1);
-        var e3 = t.charCodeAt(x + 2);
-        var e4 = t.charCodeAt(x + 3);
-        c = x;
-        b = x + 1;
-        d = x + 2;
-        g = x + 3;
-        h = x + 4;
-        for (y = 0; y < n; y++) {
-            k = s.charCodeAt(y);
-            a = p[y];
-            if (a < c || b < c) {
-                c = (a > b ? b + 1 : a + 1);
-            }
-            else {
-                if (e1 !== k) {
-                    c++;
-                }
-            }
-
-            if (c < b || d < b) {
-                b = (c > d ? d + 1 : c + 1);
-            }
-            else {
-                if (e2 !== k) {
-                    b++;
-                }
-            }
-
-            if (b < d || g < d) {
-                d = (b > g ? g + 1 : b + 1);
-            }
-            else {
-                if (e3 !== k) {
-                    d++;
-                }
-            }
-
-            if (d < g || h < g) {
-                g = (d > h ? h + 1 : d + 1);
-            }
-            else {
-                if (e4 !== k) {
-                    g++;
-                }
-            }
-            p[y] = h = g;
-            g = d;
-            d = b;
-            b = c;
-            c = a;
+      var e1 = t.charCodeAt(x);
+      var e2 = t.charCodeAt(x + 1);
+      var e3 = t.charCodeAt(x + 2);
+      var e4 = t.charCodeAt(x + 3);
+      c = x;
+      b = x + 1;
+      d = x + 2;
+      g = x + 3;
+      h = x + 4;
+      for (y = 0; y < n; y++) {
+        k = s.charCodeAt(y);
+        a = p[y];
+        if (a < c || b < c) {
+          c = (a > b ? b + 1 : a + 1);
         }
+        else {
+          if (e1 !== k) {
+            c++;
+          }
+        }
+
+        if (c < b || d < b) {
+          b = (c > d ? d + 1 : c + 1);
+        }
+        else {
+          if (e2 !== k) {
+            b++;
+          }
+        }
+
+        if (b < d || g < d) {
+          d = (b > g ? g + 1 : b + 1);
+        }
+        else {
+          if (e3 !== k) {
+            d++;
+          }
+        }
+
+        if (d < g || h < g) {
+          g = (d > h ? h + 1 : d + 1);
+        }
+        else {
+          if (e4 !== k) {
+            g++;
+          }
+        }
+        p[y] = h = g;
+        g = d;
+        d = b;
+        b = c;
+        c = a;
+      }
     }
 
     for (; x < m;) {
-        var e = t.charCodeAt(x);
-        c = x;
-        d = ++x;
-        for (y = 0; y < n; y++) {
-            a = p[y];
-            if (a < c || d < c) {
-                d = (a > d ? d + 1 : a + 1);
-            }
-            else {
-                if (e !== s.charCodeAt(y)) {
-                    d = c + 1;
-                }
-                else {
-                    d = c;
-                }
-            }
-            p[y] = d;
-            c = a;
+      var e = t.charCodeAt(x);
+      c = x;
+      d = ++x;
+      for (y = 0; y < n; y++) {
+        a = p[y];
+        if (a < c || d < c) {
+          d = (a > d ? d + 1 : a + 1);
         }
-        h = d;
+        else {
+          if (e !== s.charCodeAt(y)) {
+            d = c + 1;
+          }
+          else {
+            d = c;
+          }
+        }
+        p[y] = d;
+        c = a;
+      }
+      h = d;
     }
-   
+
     return h;
-}
+  }
 
   ngOnInit(): void {
-    
+
   }
 
 }

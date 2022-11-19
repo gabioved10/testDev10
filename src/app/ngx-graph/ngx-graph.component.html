@@ -1,11 +1,21 @@
-<h2 style="text-align: right;">{{arr[0].Label}}&nbsp;&nbsp;&nbsp;&nbsp;{{arr[0].Source}}</h2>
+<!-- <h2 style="text-align: right; display: inline-block;">{{arr[0].Label}}&nbsp;&nbsp;&nbsp;&nbsp;{{arr[0].Source}}</h2> -->
 <div class="ksatot">
+
   <div>
     <h3 style="display:inline-block;text-align: right;">סהכ קשתות יוצאות: </h3> &nbsp;&nbsp;&nbsp; {{sumSTksatot}}
-    <div style="text-align: right;"*ngFor="let item of arrST">{{item.Target}} | {{item.TargetLabel}} | {{item.count}}</div>
+    <div style="text-align: right;" *ngFor="let item of arrST">{{item.Target}} | {{item.TargetLabel}} | {{item.count}}
+    </div>
   </div>
   <div>
     <h3 style="display:inline-block;text-align: right;"> סהכ קשתות נכנסות: </h3> &nbsp;&nbsp;&nbsp;&nbsp;{{sumTSksatot}}
     <div style="text-align: right;" *ngFor="let item of arrTS">{{item.Source}} | {{item.Label}} | {{item.count}}</div>
   </div>
+
 </div>
+
+<div id="DivGrafh">
+
+  <div id="visNetworkOUT" #visNetworkOUT></div>
+</div>
+
+<div id="visNetworkIN" #visNetworkIN></div>

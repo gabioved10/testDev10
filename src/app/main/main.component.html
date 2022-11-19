@@ -1,18 +1,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="menue">
-  <div class="mainDataleft"> 
+  <div class="mainDataleft">
     <label class="selecrFile">
-      <input class="w3-input" type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx" id="Image" type="file" class="form-control-image"         name="image_reference">
+      <input class="w3-input" type="file" style="display: inline-block;" (change)="incomingfile($event)"
+        placeholder="Upload file" accept=".xlsx" id="Image" type="file" class="form-control-image"
+        name="image_reference">
       <span class="btn btn-primary">Select File </span>
     </label>
-    <span ><b>Nodes:</b>{{nodesCount}}</span>
-    <span><b >Edges</b>:{{edgesCount}}</span>
-    <span><b >Avg. Degree:</b>{{this.avgDegree| number : '1.3-3'}}</span>
+    <span><b>Nodes:</b>{{nodesCount}}</span>
+    <span><b>Edges</b>:{{edgesCount}}</span>
+    <span><b>Avg. Degree:</b>{{this.avgDegree| number : '1.3-3'}}</span>
     <span><b>Avg. Weighted Degree:</b>{{weightedDegree| number : '1.3-3'}}</span>
-    <span><b >Density:</b>{{Density| number : '1.3-3'}}</span>
+    <span><b>Density:</b>{{Density| number : '1.3-3'}}</span>
   </div>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
 </div>
@@ -21,42 +24,42 @@
 
 <div class="myTable">
   <div class="search">
-<input placeholder="search..." type="search" id="site-search" name="serchText" #serchText>
-<button class="icon" (click)="findTextFunction(serchText.value)"><i class="fa fa-search"></i></button>
-<button class="button"(click)="showAllFunction()">clean search</button>
-<p style="display: inline-block;font-size: large;">Select a row in the table to view the details</p>
-</div>
+    <input placeholder="search..." type="search" id="site-search" name="serchText" #serchText>
+    <button class="icon" (click)="findTextFunction(serchText.value)"><i class="fa fa-search"></i></button>
+    <button class="button" (click)="showAllFunction()">clean search</button>
+    <p style="display: inline-block;font-size: large;">Select a row in the table to view the details</p>
+  </div>
 
 
-<table id="networkT" *ngIf="showAll==1"class ="table">
-  <thead>
-    <th>index</th>
-    <th>Source</th>
-    <th>Label</th>
-    <th>Target</th>
-    <th>TargetLabel</th>
-    <th>Weight</th>
-    
-  </thead>
-  <tbody>
-    <tr (click)="graphFunction(item)" *ngFor="let item of findArray">
-      <td>{{item.index}}</td>
-      <td>{{item.Source}}</td>
-      <td>{{item.Label}} </td> 
-      <td>{{item.Target}}</td>
-      <td>{{item.TargetLabel}}</td>
-      <td>{{item.count}} </td> 
-      <!-- <button class="button button5"(click)="graphFunction(item)">View graph</button> -->
-    </tr>
-  </tbody>
-</table>
+  <table id="networkT" *ngIf="showAll==1" class="table">
+    <thead>
+      <th>index</th>
+      <th>Source</th>
+      <th>Label</th>
+      <th>Target</th>
+      <th>TargetLabel</th>
+      <th>Weight</th>
 
-
-
+    </thead>
+    <tbody>
+      <tr (click)="graphFunction(item)" *ngFor="let item of findArray">
+        <td>{{item.index}}</td>
+        <td>{{item.Source}}</td>
+        <td>{{item.Label}} </td>
+        <td>{{item.Target}}</td>
+        <td>{{item.TargetLabel}}</td>
+        <td>{{item.count}} </td>
+        <!-- <button class="button button5"(click)="graphFunction(item)">View graph</button> -->
+      </tr>
+    </tbody>
+  </table>
 
 
 
-  <table id="networkT"  *ngIf="showAll==0"class ="table">
+
+
+
+  <table id="networkT" *ngIf="showAll==0" class="table">
     <thead>
       <th>index</th>
       <th>Source</th>
@@ -69,15 +72,15 @@
       <tr (click)="graphFunction(item)" *ngFor="let item of mergeArray">
         <td>{{item.index}}</td>
         <td>{{item.Source}}</td>
-        <td>{{item.Label}} </td> 
+        <td>{{item.Label}} </td>
         <td>{{item.Target}}</td>
         <td>{{item.TargetLabel}}</td>
-        <td>{{item.count}} </td> 
+        <td>{{item.count}} </td>
       </tr>
     </tbody>
   </table>
 
-</div>  
+</div>
 <div class="graphDataRight">
-  <app-ngx-graph  [arr]="SelectedArray" [arrST]="this.sourceTarget" [arrTS]="this.targetSource"></app-ngx-graph>
-  </div>
+  <app-ngx-graph [arr]="SelectedArray" [arrST]="this.sourceTarget" [arrTS]="this.targetSource"></app-ngx-graph>
+</div>
