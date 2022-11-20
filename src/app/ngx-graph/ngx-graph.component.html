@@ -2,20 +2,23 @@
 <div class="ksatot">
 
   <div>
-    <h3 style="display:inline-block;text-align: right;">סהכ קשתות יוצאות: </h3> &nbsp;&nbsp;&nbsp; {{sumSTksatot}}
+    <h3 style="display:inline-block;text-align: right;">סהכ קשתות יוצאות: </h3> &nbsp;&nbsp;&nbsp;<h3
+      style="display:inline-block;text-align: right;">{{sumSTksatot}}</h3>
     <div style="text-align: right;" *ngFor="let item of arrST">{{item.Target}} | {{item.TargetLabel}} | {{item.count}}
     </div>
   </div>
   <div>
-    <h3 style="display:inline-block;text-align: right;"> סהכ קשתות נכנסות: </h3> &nbsp;&nbsp;&nbsp;&nbsp;{{sumTSksatot}}
+    <h3 style="display:inline-block;text-align: right;"> סהכ קשתות נכנסות: </h3> &nbsp;&nbsp;&nbsp;&nbsp;<h3
+      style="display:inline-block;text-align: right;">{{sumTSksatot}}</h3>
     <div style="text-align: right;" *ngFor="let item of arrTS">{{item.Source}} | {{item.Label}} | {{item.count}}</div>
   </div>
 
 </div>
 
 <div id="DivGrafh">
-
+ 
   <div id="visNetworkOUT" #visNetworkOUT></div>
 
-
-<div id="visNetworkIN" #visNetworkIN></div></div>
+  
+  <div id="visNetworkIN" #visNetworkIN></div>
+</div>

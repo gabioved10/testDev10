@@ -14,7 +14,7 @@
   .table tr:hover {background-color: #ddd;}
   
   #networkT th{
-    padding-top: 12px;
+    padding-top: px;
     padding-bottom: 12px;
     text-align: left;
     background-color: #007bff;
@@ -95,17 +95,17 @@ label {
 .mainDataleft{
   width: 90%;
    border: 2px solid;
-    margin: 28px;
+    margin: 10px;
 }
 .graphDataRight{
   width: 90%;
     border: 2px solid;
-    margin: 28px;
+    margin: 10px;
 }
 .myTable{
   width: 90%;
   border: 2px solid;
-  margin: 28px;
+  margin: 10px;
   direction: rtl;
 }
 td {text-align: right; direction: rtl;}
@@ -113,6 +113,6 @@ span {
     margin: 12px;
     font-size: larger;}
 
-    table  { margin-top:  20px; display: inline-block; overflow: auto; max-height: 300px;}
+    table  { margin-top:  20px; display: inline-block; overflow: auto; max-height: 200px;}
 
   

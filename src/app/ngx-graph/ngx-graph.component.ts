@@ -35,34 +35,35 @@ export class NgxGraphComponent implements OnInit, AfterViewInit {
 
 
   calcSumKsatot() {
+
+    //חישוב סהכ קשתות נכנסות ויוצאות
     let count: number = 0;
     this.arrST.forEach(e => { count = e.count + count });
     this.sumSTksatot = count;
+
     count = 0
     this.arrTS.forEach(e => { count = e.count + count });
     this.sumTSksatot = count;
 
   }
 
-  ngOnInit(): void {
+
+  //פונקציה ליצירת גרפים
+  sohwGrafh() {
 
 
-    this.calcSumKsatot()
-
-  }
-
-  ngOnChanges(): void {
-
-    console.log(this.arrST)
     // create an array with nodes
-
+    //קשתות יוצאות 
     let arr: any[] = [];
     let arrEdges: any[] = [];
+
+    //חול אובייקטך
     let obj = {}
     obj["id"] = this.arrST[0].Source
     obj["label"] = this.arrST[0].Source
     arr.push(obj);
 
+    //הכנסה של איבר ראשי למערך
     this.arrST.forEach(element => {
       obj = {}
       if (this.arrST[0].Source != element.Target) {
@@ -70,10 +71,11 @@ export class NgxGraphComponent implements OnInit, AfterViewInit {
         obj["label"] = element.Target
         arr.push(obj);
       }
-
-
     });
+
     let nodes = new DataSet<any>(arr);
+
+    //הכנסת ערכים from to
 
     this.arrST.forEach(element => {
       obj = {}
@@ -81,25 +83,21 @@ export class NgxGraphComponent implements OnInit, AfterViewInit {
       obj["from"] = element.Source
       obj["to"] = element.Target
       arrEdges.push(obj);
-
-
     });
 
 
-    // create an array with edges
+
+
     let edges = new DataSet<any>(arrEdges);
-
-
     const dataIN = { nodes, edges };
-
     const containerIN = this.visNetworkIN;
     this.networkInstance = new Network(containerIN.nativeElement, dataIN, {});
 
-    console.log(this.arrTS)
 
 
 
-    //קשתות יוצאות
+
+    //קשתות נכנסות
 
     let arr1: any[] = [];
     let arrEdges1: any[] = [];
@@ -118,8 +116,6 @@ export class NgxGraphComponent implements OnInit, AfterViewInit {
 
 
     });
-
-
 
 
     nodes = new DataSet<any>(arr1);
@@ -142,8 +138,21 @@ export class NgxGraphComponent implements OnInit, AfterViewInit {
     const containerOUT = this.visNetworkOUT;
     this.networkInstance = new Network(containerOUT.nativeElement, dataOUT, {});
 
+  }
 
 
+
+
+  ngOnInit(): void {
+
+    this.sohwGrafh()
+    this.calcSumKsatot()
+
+  }
+
+  ngOnChanges(): void {
+
+    this.sohwGrafh()
     this.calcSumKsatot()
 
   }

@@ -122,8 +122,6 @@ export class MainComponent implements OnInit {
 
       }
 
-
-
     })
 
 
@@ -137,8 +135,6 @@ export class MainComponent implements OnInit {
     this.avgDegree = (this.edgesCount / this.nodesCount)//דרגה ממוצעת
     this.weightedDegree = countKeset / this.nodesCount;//דרגה ממוצעת משוקלל
     this.mergeArray = mergeArr;
-
-
   };
 
 
@@ -165,7 +161,6 @@ export class MainComponent implements OnInit {
         if (ele.charAt(i) != '"') {
           finalString += ele.charAt(i);
         }
-
       }
 
       ele = finalString;
@@ -174,19 +169,12 @@ export class MainComponent implements OnInit {
 
       let myArray = ele.split(" ");
 
+
       for (let index = 0; index < myArray.length; index++) {
-        if (this.levenshtein(myArray[index], textFind) == 2) {
-
+        if (this.levenshtein(myArray[index], textFind) == 1) {
           this.findArray.push(element);
-
-        }
-
-
+                 }
       }
-
-
-
-
 
     });
 
@@ -197,7 +185,6 @@ export class MainComponent implements OnInit {
   //פונקציה לתצוגת כל הרשומות כולל משקלים
   showAllFunction() {
     this.showAll = 0;
-
   }
 
   //פונקציה להעברת רשומה שנבחרה לקומפוננטה גרף
@@ -209,7 +196,6 @@ export class MainComponent implements OnInit {
     this.sourceTarget = this.mergeArray.filter(e => e["Source"] == item["Source"]);
     this.targetSource = this.mergeArray.filter(e => e["Target"] == item["Source"]);
     this.showGraph = 1;
-
   }
 
 
