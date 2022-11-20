@@ -1,3 +1,8 @@
+.html{
+  container-type: inline-size;
+}
+
+
 .table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -92,20 +97,27 @@ label {
 .button5 {background-color: #555555;} /* Black */
 
 
+.menu{
+
+}
+
 .mainDataleft{
+  
   width: 90%;
    border: 2px solid;
-    margin: 10px;
+    margin: 5px;
 }
 .graphDataRight{
+  
   width: 90%;
     border: 2px solid;
-    margin: 10px;
+    margin: 5px;
 }
 .myTable{
+  
   width: 90%;
   border: 2px solid;
-  margin: 10px;
+  margin: 5px;
   direction: rtl;
 }
 td {text-align: right; direction: rtl;}

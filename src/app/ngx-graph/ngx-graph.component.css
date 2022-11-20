@@ -38,7 +38,7 @@
 
   #visNetworkIN,visNetworkOUT{
     width: 50%;
-    height: 350px;
+    height: 250px;
     border: 1px solid rgb(1, 1, 1);
     display: inline-flex;
   }
@@ -46,7 +46,7 @@
 
   div#DivGrafh {
     width: 50%;
-    height: 350px;
+    height: 250px;
     border: 1px solid rgb(1, 1, 1);
     display: inline-flex;
    
