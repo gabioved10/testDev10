@@ -134,6 +134,7 @@ export class MainComponent implements OnInit {
     this.edgesCount = mergeArr.length//כמות הקשתות
     this.avgDegree = (this.edgesCount / this.nodesCount)//דרגה ממוצעת
     this.weightedDegree = countKeset / this.nodesCount;//דרגה ממוצעת משוקלל
+    this.Density = this.edgesCount/(this.nodesCount *(this.nodesCount-1)/2)//-  מספר הקשרים ברשת חלקי מספר קשרים אפשרי חישוב צפיפות
     this.mergeArray = mergeArr;
   };
 
@@ -171,8 +172,13 @@ export class MainComponent implements OnInit {
 
 
       for (let index = 0; index < myArray.length; index++) {
+        if(element.index==8794){
+          element=element;
+        }
         if (this.levenshtein(myArray[index], textFind) == 1) {
+         
           this.findArray.push(element);
+          break;
                  }
       }
 
